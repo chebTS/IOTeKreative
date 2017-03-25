@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">IOTeKreative</string>
+    <string-array name="robots">
+        <item>Cheb</item>
+        <item>Gary</item>
+        <item>Kirill</item>
+    </string-array>
 </resources>
