@@ -35,11 +35,14 @@
                 android:layout_width="180dp"
                 android:layout_height="wrap_content" />
 
-            <TextView
+            <ToggleButton
+                android:id="@+id/btn_fire"
                 android:textSize="36sp"
-                android:layout_width="wrap_content"
+                android:padding="10dp"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
-                android:text="!@#$%"/>
+                android:textOff="FIRE"
+                android:textOn="STOP"/>
 
             <SeekBar
                 android:id="@+id/servo"

@@ -6,8 +6,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.ToggleButton;
 
 import com.ekreative.iotekreative.R;
 import com.ekreative.iotekreative.views.VerticalSeekBar;
@@ -21,16 +23,26 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference referenceLeft;
     private DatabaseReference referenceRight;
     private DatabaseReference referenceServo;
-    private final String LEFT_MOTOR_0 = "cheb_motor_l";
-    private final String RIGHT_MOTOR_0 = "cheb_motor_r";
-    private final String LEFT_MOTOR_1 = "gary_motor_l";
-    private final String RIGHT_MOTOR_1 = "gary_motor_r";
-    private final String LEFT_MOTOR_2 = "kirill_motor_l";
-    private final String RIGHT_MOTOR_2 = "kirill_motor_r";
+    private DatabaseReference referenceFire;
+
+    private final String CHEB_LEFT_MOTOR = "cheb_motor_l";
+    private final String CHEB_RIGHT_MOTOR = "cheb_motor_r";
+
+    private final String GARY_LEFT_MOTOR = "gary_motor_l";
+    private final String GARY_RIGHT_MOTOR = "gary_motor_r";
+
+    private final String KIRILL_LEFT_MOTOR = "kirill_motor_l";
+    private final String KIRILL_RIGHT_MOTOR = "kirill_motor_r";
 
     private final String CHEB_SERVO = "cheb_servo";
     private final String GARY_SERVO = "gary_servo";
     private final String KIRILL_SERVO = "kirill_servo";
+
+    private final String CHEB_FIRE= "cheb_fire";
+    private final String GARY_FIRE = "gary_fire";
+    private final String KIRILL_FIRE = "kirill_fire";
+
+
 
     private final int ZERO = 255;
 
@@ -40,19 +52,22 @@ public class MainActivity extends AppCompatActivity {
         switch (i){
             default:
             case 0:
-                referenceLeft = FirebaseDatabase.getInstance().getReference().child(LEFT_MOTOR_0);
-                referenceRight = FirebaseDatabase.getInstance().getReference().child(RIGHT_MOTOR_0);
+                referenceLeft = FirebaseDatabase.getInstance().getReference().child(CHEB_LEFT_MOTOR);
+                referenceRight = FirebaseDatabase.getInstance().getReference().child(CHEB_RIGHT_MOTOR);
                 referenceServo = FirebaseDatabase.getInstance().getReference().child(CHEB_SERVO);
+                referenceFire = FirebaseDatabase.getInstance().getReference().child(CHEB_FIRE);
                 break;
             case 1:
-                referenceLeft = FirebaseDatabase.getInstance().getReference().child(LEFT_MOTOR_1);
-                referenceRight = FirebaseDatabase.getInstance().getReference().child(RIGHT_MOTOR_1);
+                referenceLeft = FirebaseDatabase.getInstance().getReference().child(GARY_LEFT_MOTOR);
+                referenceRight = FirebaseDatabase.getInstance().getReference().child(GARY_RIGHT_MOTOR);
                 referenceServo = FirebaseDatabase.getInstance().getReference().child(GARY_SERVO);
+                referenceFire = FirebaseDatabase.getInstance().getReference().child(GARY_FIRE);
                 break;
             case 2:
-                referenceLeft = FirebaseDatabase.getInstance().getReference().child(LEFT_MOTOR_2);
-                referenceRight = FirebaseDatabase.getInstance().getReference().child(RIGHT_MOTOR_2);
+                referenceLeft = FirebaseDatabase.getInstance().getReference().child(KIRILL_LEFT_MOTOR);
+                referenceRight = FirebaseDatabase.getInstance().getReference().child(KIRILL_RIGHT_MOTOR);
                 referenceServo = FirebaseDatabase.getInstance().getReference().child(KIRILL_SERVO);
+                referenceFire = FirebaseDatabase.getInstance().getReference().child(KIRILL_FIRE);
                 break;
         }
     }
@@ -65,6 +80,17 @@ public class MainActivity extends AppCompatActivity {
         changeRobot(0);
         setUpSpinner();
         setUpProgressBars();
+        ToggleButton button = (ToggleButton) findViewById(R.id.btn_fire);
+        button.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b){
+                    referenceFire.setValue(1);
+                }else{
+                    referenceFire.setValue(0);
+                }
+            }
+        });
     }
 
     protected void setUpSpinner(){
