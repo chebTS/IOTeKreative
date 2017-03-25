@@ -1,0 +1,58 @@
+{
+  "project_info": {
+    "project_number": "1083520699307",
+    "firebase_url": "https://iottestcheb.firebaseio.com",
+    "project_id": "iottestcheb",
+    "storage_bucket": "iottestcheb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1083520699307:android:9fa7a35bad0f001b",
+        "android_client_info": {
+          "package_name": "com.ekreative.iotekreative"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1083520699307-78r954d8pretgoto80ukg5s35k76u79q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ekreative.iotekreative",
+            "certificate_hash": "596e61cae2f2a79363a5339a33db786a20701643"
+          }
+        },
+        {
+          "client_id": "1083520699307-663stikpifsde0fs9fku8kl42l3a6phf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkOJpXYTArBASkgNsjsPQMY9Apx52r-P4"
+        },
+        {
+          "current_key": "AIzaSyCH5xkhcd-qtVuSJV-9bbwuViMZqa8QQg4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1083520699307-663stikpifsde0fs9fku8kl42l3a6phf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
