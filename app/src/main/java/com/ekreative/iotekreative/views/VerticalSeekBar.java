@@ -9,7 +9,7 @@ import android.view.MotionEvent;
  * Created by cheb on 3/25/17.
  */
 
-public class VerticalSeekBar  extends android.support.v7.widget.AppCompatSeekBar {
+public class VerticalSeekBar extends android.support.v7.widget.AppCompatSeekBar {
 
     public VerticalSeekBar(Context context) {
         super(context);
@@ -35,10 +35,12 @@ public class VerticalSeekBar  extends android.support.v7.widget.AppCompatSeekBar
 
     protected void onDraw(Canvas c) {
         c.rotate(-90);
-        c.translate(-getHeight(),0);
+        c.translate(-getHeight(), 0);
 
         super.onDraw(c);
     }
+
+    private int lastProgress = 0;
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -48,19 +50,55 @@ public class VerticalSeekBar  extends android.support.v7.widget.AppCompatSeekBar
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                onChangeListener.onStartTrackingTouch(this);
+                setPressed(true);
+                setSelected(true);
+                break;
             case MotionEvent.ACTION_MOVE:
-            case MotionEvent.ACTION_UP:
-                int i=0;
-                i=getMax() - (int) (getMax() * event.getY() / getHeight());
-                setProgress(i);
-                //Log.i("Progress",getProgress()+"");
+                super.onTouchEvent(event);
+                int progress = getMax() - (int) (getMax() * event.getY() / getHeight());
+
+                // Ensure progress stays within boundaries
+                if (progress < 0) {
+                    progress = 0;
+                }
+                if (progress > getMax()) {
+                    progress = getMax();
+                }
+                setProgress(progress);  // Draw progress
+                if (progress != lastProgress) {
+                    // Only enact listener if the progress has actually changed
+                    lastProgress = progress;
+                    onChangeListener.onProgressChanged(this, progress, true);
+                }
                 onSizeChanged(getWidth(), getHeight(), 0, 0);
+                setPressed(true);
+                setSelected(true);
+                break;
+            case MotionEvent.ACTION_UP:
+                onChangeListener.onStopTrackingTouch(this);
+                setPressed(false);
+                setSelected(false);
+                break;
+            case MotionEvent.ACTION_CANCEL:
+                super.onTouchEvent(event);
+                setPressed(false);
+                setSelected(false);
                 break;
 
-            case MotionEvent.ACTION_CANCEL:
-                break;
         }
         return true;
+    }
+
+    private OnSeekBarChangeListener onChangeListener;
+
+    @Override
+    public void setOnSeekBarChangeListener(OnSeekBarChangeListener onChangeListener) {
+        this.onChangeListener = onChangeListener;
+    }
+
+    public void updateThumb(){
+        onSizeChanged(getWidth(), getHeight(), 0, 0);
     }
 
 }

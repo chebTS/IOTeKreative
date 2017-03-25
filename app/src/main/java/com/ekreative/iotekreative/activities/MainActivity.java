@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         final VerticalSeekBar left = (VerticalSeekBar)findViewById(R.id.left);
         left.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+            public void onProgressChanged(SeekBar seekBar, int i, boolean isFromUser) {
                 Log.i(TAG, "Left : " + i);
                 referenceLeft.setValue(i - ZERO);
             }
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Log.i(TAG, "onStopTrackingTouch LEFT");
                 left.setProgress(ZERO);
+                left.updateThumb();
                 referenceLeft.setValue(ZERO);
             }
         });
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         final VerticalSeekBar right = (VerticalSeekBar)findViewById(R.id.right);
         right.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+            public void onProgressChanged(SeekBar seekBar, int i, boolean isFromUser) {
                 Log.i(TAG, "Right : " + i);
                 referenceRight.setValue(i - ZERO);
             }
@@ -64,7 +65,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+                Log.i(TAG, "onStopTrackingTouch RIGHT");
                 right.setProgress(ZERO);
+                right.updateThumb();
+                referenceRight.setValue(ZERO);
             }
         });
     }

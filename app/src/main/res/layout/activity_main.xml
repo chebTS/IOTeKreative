@@ -8,8 +8,7 @@
     tools:context="com.ekreative.iotekreative.activities.MainActivity">
 
     <LinearLayout
-        android:paddingStart="50dp"
-        android:paddingEnd="50dp"
+        android:padding="40dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
