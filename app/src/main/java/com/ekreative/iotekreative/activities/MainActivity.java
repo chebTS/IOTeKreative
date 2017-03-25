@@ -20,12 +20,18 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private DatabaseReference referenceLeft;
     private DatabaseReference referenceRight;
-    private final String LEFT_MOTOR_0 = "motor_l";
-    private final String RIGHT_MOTOR_0 = "motor_r";
-    private final String LEFT_MOTOR_1 = "motor_l_1";
-    private final String RIGHT_MOTOR_1 = "motor_r_1";
-    private final String LEFT_MOTOR_2 = "motor_l_2";
-    private final String RIGHT_MOTOR_2 = "motor_r_2";
+    private DatabaseReference referenceServo;
+    private final String LEFT_MOTOR_0 = "cheb_motor_l";
+    private final String RIGHT_MOTOR_0 = "cheb_motor_r";
+    private final String LEFT_MOTOR_1 = "gary_motor_l";
+    private final String RIGHT_MOTOR_1 = "gary_motor_r";
+    private final String LEFT_MOTOR_2 = "kirill_motor_l";
+    private final String RIGHT_MOTOR_2 = "kirill_motor_r";
+
+    private final String CHEB_SERVO = "cheb_servo";
+    private final String GARY_SERVO = "gary_servo";
+    private final String KIRILL_SERVO = "kirill_servo";
+
     private final int ZERO = 255;
 
 
@@ -36,14 +42,17 @@ public class MainActivity extends AppCompatActivity {
             case 0:
                 referenceLeft = FirebaseDatabase.getInstance().getReference().child(LEFT_MOTOR_0);
                 referenceRight = FirebaseDatabase.getInstance().getReference().child(RIGHT_MOTOR_0);
+                referenceServo = FirebaseDatabase.getInstance().getReference().child(CHEB_SERVO);
                 break;
             case 1:
                 referenceLeft = FirebaseDatabase.getInstance().getReference().child(LEFT_MOTOR_1);
                 referenceRight = FirebaseDatabase.getInstance().getReference().child(RIGHT_MOTOR_1);
+                referenceServo = FirebaseDatabase.getInstance().getReference().child(GARY_SERVO);
                 break;
             case 2:
                 referenceLeft = FirebaseDatabase.getInstance().getReference().child(LEFT_MOTOR_2);
                 referenceRight = FirebaseDatabase.getInstance().getReference().child(RIGHT_MOTOR_2);
+                referenceServo = FirebaseDatabase.getInstance().getReference().child(KIRILL_SERVO);
                 break;
         }
     }
@@ -119,6 +128,23 @@ public class MainActivity extends AppCompatActivity {
                 right.setProgress(ZERO);
                 right.updateThumb();
                 referenceRight.setValue(0);
+            }
+        });
+        final SeekBar servo = (SeekBar)findViewById(R.id.servo);
+        servo.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                referenceServo.setValue(i - ZERO);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
     }

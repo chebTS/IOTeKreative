@@ -40,6 +40,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="!@#$%"/>
+
+            <SeekBar
+                android:id="@+id/servo"
+                android:padding="40dp"
+                android:max="511"
+                android:progress="255"
+                android:thumb="@android:drawable/ic_menu_camera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
         <com.ekreative.iotekreative.views.VerticalSeekBar
