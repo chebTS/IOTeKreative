@@ -8,12 +8,16 @@
     tools:context="com.ekreative.iotekreative.activities.MainActivity">
 
     <LinearLayout
+        android:paddingStart="50dp"
+        android:paddingEnd="50dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
         <com.ekreative.iotekreative.views.VerticalSeekBar
             android:id="@+id/left"
+            android:max="511"
+            android:progress="255"
             android:thumb="@drawable/thumb_image"
             android:layout_width="60dp"
             android:layout_height="match_parent"/>
@@ -27,6 +31,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:textSize="36sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="!@#$%"/>
@@ -34,6 +39,8 @@
 
         <com.ekreative.iotekreative.views.VerticalSeekBar
             android:id="@+id/right"
+            android:max="511"
+            android:progress="255"
             android:thumb="@drawable/thumb_image"
             android:layout_width="60dp"
             android:layout_height="match_parent"/>
