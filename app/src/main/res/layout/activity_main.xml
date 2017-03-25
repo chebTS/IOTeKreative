@@ -7,6 +7,8 @@
     android:layout_height="match_parent"
     tools:context="com.ekreative.iotekreative.activities.MainActivity">
 
+
+
     <LinearLayout
         android:padding="40dp"
         android:layout_width="match_parent"
@@ -17,8 +19,9 @@
             android:id="@+id/left"
             android:max="2048"
             android:progress="1024"
-            android:thumb="@drawable/thumb_image"
-            android:layout_width="60dp"
+            android:thumbOffset="25dp"
+            android:thumb="@drawable/icon_wheel_side"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"/>
 
         <LinearLayout
@@ -58,8 +61,9 @@
             android:id="@+id/right"
             android:max="2048"
             android:progress="1024"
-            android:thumb="@drawable/thumb_image"
-            android:layout_width="60dp"
+            android:thumbOffset="25dp"
+            android:thumb="@drawable/icon_wheel_side"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"/>
 
     </LinearLayout>
