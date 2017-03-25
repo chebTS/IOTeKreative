@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private final int ZERO = 255;
+    private final int ZERO = 1024;
 
 
     protected void changeRobot(int i) {
@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
         servo.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                referenceServo.setValue(i - ZERO);
+                referenceServo.setValue(i);
             }
 
             @Override

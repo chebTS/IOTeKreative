@@ -15,8 +15,8 @@
 
         <com.ekreative.iotekreative.views.VerticalSeekBar
             android:id="@+id/left"
-            android:max="511"
-            android:progress="255"
+            android:max="2048"
+            android:progress="1024"
             android:thumb="@drawable/thumb_image"
             android:layout_width="60dp"
             android:layout_height="match_parent"/>
@@ -47,8 +47,8 @@
             <SeekBar
                 android:id="@+id/servo"
                 android:padding="40dp"
-                android:max="511"
-                android:progress="255"
+                android:max="180"
+                android:progress="0"
                 android:thumb="@android:drawable/ic_menu_camera"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -56,8 +56,8 @@
 
         <com.ekreative.iotekreative.views.VerticalSeekBar
             android:id="@+id/right"
-            android:max="511"
-            android:progress="255"
+            android:max="2048"
+            android:progress="1024"
             android:thumb="@drawable/thumb_image"
             android:layout_width="60dp"
             android:layout_height="match_parent"/>
